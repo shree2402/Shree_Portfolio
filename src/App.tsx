@@ -17,33 +17,35 @@ import {
 type Direction = 'next' | 'prev';
 type Role = 'center' | 'left' | 'right' | 'back';
 
+const assetPath = (path: string) => `${import.meta.env.BASE_URL}${path.replace(/^\//, '')}`;
+
 const IMAGES = [
   {
-    src: './public/intro-figurine.png',
+    src: assetPath('intro-figurine.png'),
     bg: '#F4845F',
     panel: '#F79B7F',
     label: 'Intro',
   },
   {
-    src: './public/education-figurine.png',
+    src: assetPath('education-figurine.png'),
     bg: '#6BBF7A',
     panel: '#85CC92',
     label: 'Education',
   },
   {
-    src: './public/experience-figurine.png',
+    src: assetPath('experience-figurine.png'),
     bg: '#E882B4',
     panel: '#ED9DC4',
     label: 'Experience',
   },
   {
-    src: './public/projects-figurine.png',
+    src: assetPath('projects-figurine.png'),
     bg: '#6EB5FF',
     panel: '#8DC4FF',
     label: 'Projects',
   },
   {
-    src: './public/skills-figurine.png',
+    src: assetPath('skills-figurine.png'),
     bg: '#8B5CF6',
     panel: '#A78BFA',
     label: 'Skills',
@@ -109,7 +111,7 @@ const projects = [
     title: 'ProArcade',
     organization: 'AI-Powered Gamified Productivity Platform',
     date: 'Jun 2026 - Present',
-    image: './public/projects/proarcade.jpg',
+    image: assetPath('projects/proarcade.jpg'),
     description:
       'Cross-browser full-stack productivity platform with JWT authentication, persistent game sessions, personalized tasks, and game progression.',
     impact:
@@ -120,7 +122,7 @@ const projects = [
     title: 'AR E-Commerce Virtual Try-On',
     organization: 'Texas State University',
     date: 'Feb 2026 - May 2026',
-    image: './public/projects/ar-ecommerce.jpg',
+    image: assetPath('projects/ar-ecommerce.jpg'),
     description:
       'AR-enabled full-stack e-commerce application supporting 100+ products with real-time product visualization and AI-powered virtual try-on.',
     impact:
@@ -131,7 +133,7 @@ const projects = [
     title: 'Eye Tracker System',
     organization: 'Texas State University',
     date: 'Sep 2025 - Oct 2025',
-    image: './public/projects/eye-tracker.jpeg',
+    image: assetPath('projects/eye-tracker.jpeg'),
     description:
       'Real-time eye-tracking system using computer vision and gaze estimation for pupil detection and tracking across video streams.',
     impact:
@@ -142,7 +144,7 @@ const projects = [
     title: 'QAAsker',
     organization: 'Consistency Testing Framework',
     date: 'Aug 2025 - Dec 2025',
-    image: './public/projects/qaasker.png',
+    image: assetPath('projects/qaasker.png'),
     description:
       'Consistency testing framework evaluating three NLP question-answering models across 1,000+ samples using metamorphic testing.',
     impact:
@@ -369,7 +371,7 @@ function App() {
               <span className="hidden sm:inline">shreegayathrignana@gmail.com</span>
             </a>
             <a
-              href="/Shree_Gayathri_Gnanasekar_Resume.pdf"
+              href={assetPath('Shree_Gayathri_Gnanasekar_Resume.pdf')}
               download
               className="flex h-10 items-center gap-2 rounded-full border border-white/60 px-3 text-xs font-bold uppercase text-white transition-colors hover:bg-white/15 sm:px-4"
               style={{ letterSpacing: '0.08em' }}
@@ -574,13 +576,13 @@ function EducationSlide() {
         >
           {index === 0 ? (
             <img
-              src="/texas-state-seal.png"
+              src={assetPath('texas-state-seal.png')}
               alt="Texas State University seal"
               className="mb-4 h-8 w-8 rounded-full object-contain"
             />
           ) : (
             <img
-              src="/bachelor-logo.png"
+              src={assetPath('bachelor-logo.png')}
               alt="Avinashilingam Institute logo"
               className="mb-4 h-8 w-8 rounded-full bg-white object-contain"
             />
