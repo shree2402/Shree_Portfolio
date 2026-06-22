@@ -608,7 +608,7 @@ function ExperienceSlide() {
 
   return (
     <div className="absolute inset-x-4 top-[18%] grid gap-4 text-white sm:inset-x-10 sm:top-[38%] sm:grid-cols-[minmax(0,320px)_1fr_minmax(0,420px)]" style={{ zIndex: 60 }}>
-      <div className="relative space-y-3 pl-5 before:absolute before:bottom-5 before:left-0 before:top-5 before:w-0.5 before:bg-white/45 sm:col-start-1">
+      <div className="relative self-start space-y-3 pl-5 before:absolute before:bottom-5 before:left-0 before:top-5 before:w-0.5 before:bg-white/45 sm:col-start-1">
         {experiences.map((item, index) => (
           <button
             key={item.company}
