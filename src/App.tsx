@@ -184,6 +184,7 @@ function App() {
   const [isAnimating, setIsAnimating] = useState(false);
   const [isHireOpen, setIsHireOpen] = useState(false);
   const [hireForm, setHireForm] = useState({ name: '', email: '', message: '' });
+  const [hireStatus, setHireStatus] = useState<'idle' | 'sending' | 'sent' | 'error'>('idle');
   const [isMobile, setIsMobile] = useState(() =>
     typeof window === 'undefined' ? false : window.innerWidth < 640,
   );
@@ -228,11 +229,32 @@ function App() {
     window.setTimeout(() => setIsAnimating(false), 650);
   };
 
-  const handleHireSubmit = (_event: FormEvent<HTMLFormElement>) => {
-    window.setTimeout(() => {
+  const handleHireSubmit = async (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    setHireStatus('sending');
+
+    try {
+      const response = await fetch('https://formsubmit.co/ajax/shreegayathrignana@gmail.com', {
+        method: 'POST',
+        body: new FormData(event.currentTarget),
+        headers: {
+          Accept: 'application/json',
+        },
+      });
+
+      if (!response.ok) {
+        throw new Error('Unable to send message');
+      }
+
+      setHireStatus('sent');
       setHireForm({ name: '', email: '', message: '' });
-      setIsHireOpen(false);
-    }, 400);
+      window.setTimeout(() => {
+        setHireStatus('idle');
+        setIsHireOpen(false);
+      }, 1500);
+    } catch {
+      setHireStatus('error');
+    }
   };
 
   const getRole = (index: number): Role => {
@@ -441,13 +463,14 @@ function App() {
               {isHireOpen && (
             <form
               onSubmit={handleHireSubmit}
-              action="https://formsubmit.co/shreegayathrignana@gmail.com"
+              action="https://formsubmit.co/ajax/shreegayathrignana@gmail.com"
               method="POST"
               className="mb-4 w-[min(21rem,calc(100vw-2rem))] rounded-[8px] border border-white/45 bg-white/18 p-4 text-white shadow-2xl backdrop-blur-xl"
             >
               <input type="hidden" name="_subject" value="New portfolio hire inquiry" />
               <input type="hidden" name="_captcha" value="false" />
               <input type="hidden" name="_template" value="table" />
+              <input type="hidden" name="_replyto" value={hireForm.email} />
               <div className="mb-3 flex items-center justify-between gap-3">
                 <h2 className="text-lg font-bold">Start a conversation</h2>
                 <button
@@ -496,12 +519,23 @@ function App() {
               </label>
               <button
                 type="submit"
-                className="flex w-full items-center justify-center gap-2 rounded-full border border-white/70 px-4 py-2 text-sm font-bold uppercase transition-colors hover:bg-white/15"
+                disabled={hireStatus === 'sending'}
+                className="flex w-full items-center justify-center gap-2 rounded-full border border-white/70 px-4 py-2 text-sm font-bold uppercase transition-colors hover:bg-white/15 disabled:cursor-not-allowed disabled:opacity-70"
                 style={{ letterSpacing: '0.08em' }}
               >
-                Send Message
+                {hireStatus === 'sending' ? 'Sending...' : 'Send Message'}
                 <Send className="h-4 w-4" strokeWidth={2.25} />
               </button>
+              {hireStatus === 'sent' && (
+                <p className="mt-3 text-center text-xs font-semibold uppercase text-white/90" style={{ letterSpacing: '0.08em' }}>
+                  Message sent
+                </p>
+              )}
+              {hireStatus === 'error' && (
+                <p className="mt-3 text-center text-xs font-semibold uppercase text-white/90" style={{ letterSpacing: '0.08em' }}>
+                  Please try again
+                </p>
+              )}
             </form>
           )}
           <button
