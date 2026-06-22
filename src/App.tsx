@@ -19,31 +19,31 @@ type Role = 'center' | 'left' | 'right' | 'back';
 
 const IMAGES = [
   {
-    src: '/intro-figurine.png',
+    src: './public/intro-figurine.png',
     bg: '#F4845F',
     panel: '#F79B7F',
     label: 'Intro',
   },
   {
-    src: '/education-figurine.png',
+    src: './public/education-figurine.png',
     bg: '#6BBF7A',
     panel: '#85CC92',
     label: 'Education',
   },
   {
-    src: '/experience-figurine.png',
+    src: './public/experience-figurine.png',
     bg: '#E882B4',
     panel: '#ED9DC4',
     label: 'Experience',
   },
   {
-    src: '/projects-figurine.png',
+    src: './public/projects-figurine.png',
     bg: '#6EB5FF',
     panel: '#8DC4FF',
     label: 'Projects',
   },
   {
-    src: '/skills-figurine.png',
+    src: './public/skills-figurine.png',
     bg: '#8B5CF6',
     panel: '#A78BFA',
     label: 'Skills',
@@ -109,7 +109,7 @@ const projects = [
     title: 'ProArcade',
     organization: 'AI-Powered Gamified Productivity Platform',
     date: 'Jun 2026 - Present',
-    image: '/projects/proarcade.jpg',
+    image: './public/projects/proarcade.jpg',
     description:
       'Cross-browser full-stack productivity platform with JWT authentication, persistent game sessions, personalized tasks, and game progression.',
     impact:
@@ -120,7 +120,7 @@ const projects = [
     title: 'AR E-Commerce Virtual Try-On',
     organization: 'Texas State University',
     date: 'Feb 2026 - May 2026',
-    image: '/projects/ar-ecommerce.jpg',
+    image: './public/projects/ar-ecommerce.jpg',
     description:
       'AR-enabled full-stack e-commerce application supporting 100+ products with real-time product visualization and AI-powered virtual try-on.',
     impact:
@@ -131,7 +131,7 @@ const projects = [
     title: 'Eye Tracker System',
     organization: 'Texas State University',
     date: 'Sep 2025 - Oct 2025',
-    image: '/projects/eye-tracker.jpeg',
+    image: './public/projects/eye-tracker.jpeg',
     description:
       'Real-time eye-tracking system using computer vision and gaze estimation for pupil detection and tracking across video streams.',
     impact:
@@ -142,7 +142,7 @@ const projects = [
     title: 'QAAsker',
     organization: 'Consistency Testing Framework',
     date: 'Aug 2025 - Dec 2025',
-    image: '/projects/qaasker.png',
+    image: './public/projects/qaasker.png',
     description:
       'Consistency testing framework evaluating three NLP question-answering models across 1,000+ samples using metamorphic testing.',
     impact:
@@ -606,7 +606,7 @@ function ExperienceSlide() {
 
   return (
     <div className="absolute inset-x-4 top-[18%] grid gap-4 text-white sm:inset-x-10 sm:top-[38%] sm:grid-cols-[minmax(0,320px)_1fr_minmax(0,420px)]" style={{ zIndex: 60 }}>
-      <div className="relative self-start space-y-3 pl-5 before:absolute before:bottom-5 before:left-0 before:top-5 before:w-0.5 before:bg-white/45 sm:col-start-1">
+      <div className="relative space-y-3 pl-5 before:absolute before:bottom-5 before:left-0 before:top-5 before:w-0.5 before:bg-white/45 sm:col-start-1">
         {experiences.map((item, index) => (
           <button
             key={item.company}
