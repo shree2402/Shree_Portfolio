@@ -574,13 +574,13 @@ function EducationSlide() {
         >
           {index === 0 ? (
             <img
-              src="/texas-state-seal.png"
+              src="./texas-state-seal.png"
               alt="Texas State University seal"
               className="mb-4 h-8 w-8 rounded-full object-contain"
             />
           ) : (
             <img
-              src="/bachelor-logo.png"
+              src="./bachelor-logo.png"
               alt="Avinashilingam Institute logo"
               className="mb-4 h-8 w-8 rounded-full bg-white object-contain"
             />
