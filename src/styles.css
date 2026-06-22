@@ -1,0 +1,41 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+  margin: 0;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+.ghost-title {
+  animation: ghost-title-enter 650ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes ghost-title-enter {
+  0% {
+    opacity: 0;
+    transform: translateY(24px) scale(0.96);
+    filter: blur(8px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+}
